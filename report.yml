@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - file:
+      state: directory
+      path: /home/ansible/lab-error-handling
+      mode: '0755'
+  - get_url:
+        url="https://bit.ly/3dtJtR7"
+        dest="/home/ansible/lab-error-handling/transaction_list"
+      register: get_file
+  - replace:
+      path: /home/ansible/lab-error-handling/transaction_list
+      regexp: #BLANKLINE
+      replace: '\n'
+  - debug:
+        msg="File downloaded successfully"
+      when: get_file|changed
+      
