@@ -13,8 +13,10 @@
         register: get_file
   - replace:
       path: /home/ansible/lab-error-handling/transaction_list
-      regexp: #BLANKLINE
+      regexp: "#BLANKLINE"
       replace: '\n'
   - debug: msg="File downloaded successfully"
   rescue: 
   - debug: msg="Site appears to be down. Try again later."
+  always:
+  - debug: msg="attempt completed"
