@@ -10,7 +10,6 @@
     - get_url:
           url: https://bit.ly/3dtJtR7
           dest: /home/ansible/lab-error-handling/transaction_list
-          register: get_file
     - replace:
         path: /home/ansible/lab-error-handling/transaction_list
         regexp: "#BLANKLINE"
